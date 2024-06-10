@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import '../../../css/RegistroUsuario.css';
 import axios from 'axios';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
+import MailIcon from '@mui/icons-material/Mail';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -74,7 +74,7 @@ const RegistroUsuario = () => {
                 if (resp.data.type === 'Success') {
                     setError('');
                     console.log(resp.data.msg);
-                    navigate('/dashboard');
+                    navigate('/login');
                 } else {
                     setError(resp.data.msg);
                     console.log(resp.data.msg);
@@ -157,7 +157,7 @@ const RegistroUsuario = () => {
                         </div>
                         <div className="form-field">
                             <label className="form-label">
-                                <ContactMailIcon className="form-icon" />Correo
+                                <MailIcon  className="form-icon" />Correo
                             </label>
                             <input
                                 type="email"
