@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-
 import '../../../css/RegistroUsuario.css';
 import axios from 'axios';
 import MailIcon from '@mui/icons-material/Mail';
@@ -13,8 +12,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import KeyIcon from '@mui/icons-material/Key';
 import Input from '@mui/material/Input';
-import configur from '../../../env';
+import configur from '../../../apis/env';
 import Alert from '@mui/material/Alert';
+import useForm from '../../../hooks/useForm';
 
 // Obtener la configuración del entorno
 const env = configur.envDev ? configur.dev : configur.prod;
@@ -23,7 +23,8 @@ const baseUrl = env.api.base + env.api.ruta.registro;
 const RegistroUsuario = () => {
     const navigate = useNavigate();
 
-    const [values, setValues] = React.useState({
+    // Usa el hook useForm
+    const { values, error, handleChange, handleClickShowPassword, handleClickShowConfirmPassword, handleMouseDownPassword, setError } = useForm({
         nombres: "",
         apellido1: "",
         apellido2: "",
@@ -35,24 +36,6 @@ const RegistroUsuario = () => {
         showPassword: true,
         showConfirmPassword: true,
     });
-
-    const [error, setError] = React.useState('');
-
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-    };
-
-    const handleClickShowConfirmPassword = () => {
-        setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
-    };
-
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
-
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    };
 
     const registrarUsuario = () => {
         const { nombres, apellido1, apellido2, nombreUsuario, correo, telefono, password, confirmPassword } = values;
@@ -99,8 +82,6 @@ const RegistroUsuario = () => {
             <div className="login-content">
                 <div className="login-form">
                     <div className="login-identy">
-                        {/*<LogoMinisterio size={100} />
-                        <Siglas width={70} height={30} />*/}
                         <div className="login-title">
                             <h6>REGISTRARSE EN EL SISTEMA</h6>
                         </div>
