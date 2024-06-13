@@ -11,7 +11,7 @@ const Copyright = (props) =>{
           {new Date().getFullYear()}
         </Typography>
         <Typography  variant="body3" color="#ffffff" align="center" {...props}>
-          {'Ventanilla de Atencion Virtual'}
+          {'Ventanilla de Atención Virtual'}
         </Typography>
       </div>
     );

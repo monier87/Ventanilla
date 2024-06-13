@@ -1,0 +1,14 @@
+/* Footer.css */
+
+.footer-container {
+    background-color: #0e0f0f; 
+    padding-top: 8px; 
+    padding-bottom: 8px; 
+  }
+  
+  .footer-text {
+    color: #ffffff; 
+    font-size: 14px; 
+    text-align: center; 
+  }
+  
