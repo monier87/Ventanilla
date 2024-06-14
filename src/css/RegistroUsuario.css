@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Global Styles */
 body {
   margin: 0;
@@ -14,18 +12,21 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #7abaa2;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Login Content */
 .login-content {
   text-align: center;
   color: #0e9390;
-  min-width: 350px;
+  min-width: 100%;
+  max-width: 400px;
 }
 
 /* Login Title */
 .login-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-top: 10px;
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -41,9 +42,11 @@ body {
 /* Login Form */
 .login-form {
   background-color: #ffffff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
+  width: 100%;
   max-width: 400px;
+  box-sizing: border-box;
   margin: 0 auto;
 }
 
@@ -97,39 +100,36 @@ body {
   box-sizing: border-box;
 }
 
-.show-pass-button {
-  background-color: #0e9390;
+/* Cancel Button */
+.cancel-button {
+  background-color: #ccc;
+  color: #000;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.show-pass-icon {
-  color: #ffffff;
-  margin-bottom: 5px;
-}
+/* Responsive Media Queries */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 10px;
+  }
 
-/* Login Icons */
-.login-icons {
-  margin-top: 20px;
-}
+  .login-title {
+    font-size: 1.5rem;
+  }
 
-/* Login Icon */
-.login-icon {
-  margin: 10px;
-}
+  .form-label {
+    font-size: 0.9rem;
+  }
 
-.login-info {
-  color: black !important;
-  font-size: 14px;
-}
-
-.login-info a {
-  color: #0e9390 !important;
-  font-size: 14px;
-}
-
-svg {
-  color: #0e9390 !important;
-}
-
-.css-1vooibu-MuiSvgIcon-root {
-  color: #5f2120 !important;
+  .login-button,
+  .cancel-button {
+    font-size: 1rem;
+    padding: 8px;
+  }
 }

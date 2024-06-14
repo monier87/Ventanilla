@@ -1,20 +1,26 @@
-import  { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-import '../../../css/RegistroUsuario.css';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import MailIcon from '@mui/icons-material/Mail';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import IconButton from '@mui/material/IconButton';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import InputLabel from '@mui/material/InputLabel';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import InputAdornment from '@mui/material/InputAdornment';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import KeyIcon from '@mui/icons-material/Key';
-import Input from '@mui/material/Input';
+import {
+    Alert,
+    Input,
+    InputAdornment,
+    InputLabel,
+    IconButton,
+} from '@mui/material';
+import {
+    Mail as MailIcon,
+    PeopleAlt as PeopleAltIcon,
+    LocalPhone as LocalPhoneIcon,
+    Visibility as VisibilityIcon,
+    VisibilityOff as VisibilityOffIcon,
+    Key as KeyIcon
+} from '@mui/icons-material';
+
+import '../../../css/RegistroUsuario.css';
 import configur from '../../../apis/env';
-import Alert from '@mui/material/Alert';
 import useForm from '../../../hooks/useForm';
+
 
 // Obtener la configuración del entorno
 const env = configur.envDev ? configur.dev : configur.prod;
