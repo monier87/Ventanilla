@@ -1,20 +1,17 @@
-import Typography from '@mui/material/Typography';
+import { Typography } from '@mui/material';
 
-const Copyright = (props) =>{
-    return (
-      <div>
-        <Typography  variant="body2" color="#ffffff" align="center" {...props}>
-          {'Copyright © '}
-          {/* <Link color="#ffffff" href="#"> */}
-            
-          {/* </Link>{' '} */}
-          {new Date().getFullYear()}
-        </Typography>
-        <Typography  variant="body3" color="#ffffff" align="center" {...props}>
-          {'Ventanilla de Atención Virtual'}
-        </Typography>
-      </div>
-    );
-  };
+const Copyright = () => {
+  return (
+    <>
+      <Typography variant="body2" color="#ffffff" align="center">
+        {'Copyright © '}
+        {new Date().getFullYear()}
+      </Typography>
+      <Typography variant="body2" color="#ffffff" align="center">
+        {'Ventanilla de Atención Virtual'}
+      </Typography>
+    </>
+  );
+};
 
-  export default Copyright;
+export default Copyright;

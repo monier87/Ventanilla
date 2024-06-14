@@ -1,17 +1,15 @@
-import { Box, Typography, Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Copyright from '../layout/Copyright';
-import '../../css/Footer.css'
+import '../../css/Footer.css';
 
 const Footer = () => {
     return (
         <Box
             component="footer"
-            className="footer-container" // Aplicamos la clase para el contenedor del footer
+            className="footer-container"
         >
             <Container maxWidth="sm">
-                <Typography variant="body2" className="footer-text"> {/* Usamos body2 para un tamaño de texto más pequeño */}
-                    <Copyright />
-                </Typography>
+                <Copyright />
             </Container>
         </Box>
     );
