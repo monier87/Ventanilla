@@ -1,24 +1,21 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
 
-const pages = ['Inicio', 'Servicios', 'Iniciar Trámite', 'Reportes', 'Administración']; //En reportes, hacer un menu desplegable con "EStado", "Historial de Tramites" etc..
+const pages = [
+  { name: 'Inicio', subMenu: [] },
+  { name: 'Servicios', subMenu: ['Tipo de Servicios'] },
+  { name: 'Iniciar Trámite', subMenu: ['Tipo de Trámite'] },
+  { name: 'Reportes', subMenu: ['Estado', 'Mis trámites'] },
+  { name: 'Administración', subMenu: ['Usuario', 'Grupos', 'Instancias', 'Roles'] }
+];
 const settings = ['Perfil', 'Inicio', 'Salir'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElSubMenu, setAnchorElSubMenu] = React.useState({});
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -27,12 +24,20 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
+  const handleOpenSubMenu = (event, page) => {
+    setAnchorElSubMenu((prev) => ({ ...prev, [page]: event.currentTarget }));
+  };
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleCloseSubMenu = (page) => {
+    setAnchorElSubMenu((prev) => ({ ...prev, [page]: null }));
   };
 
   return (
@@ -88,8 +93,8 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -115,13 +120,35 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 0, mx: 1, color: 'white' }}
-              >
-                {page}
-              </Button>
+              <Box key={page.name} sx={{ position: 'relative' }}>
+                <Button
+                  onClick={(event) => page.subMenu.length > 0 ? handleOpenSubMenu(event, page.name) : handleCloseNavMenu()}
+                  sx={{ my: 0, mx: 1, color: 'white' }}
+                >
+                  {page.name}
+                </Button>
+                {page.subMenu.length > 0 && (
+                  <Menu
+                    anchorEl={anchorElSubMenu[page.name]}
+                    open={Boolean(anchorElSubMenu[page.name])}
+                    onClose={() => handleCloseSubMenu(page.name)}
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'left',
+                    }}
+                  >
+                    {page.subMenu.map((subPage) => (
+                      <MenuItem key={subPage} onClick={() => handleCloseSubMenu(page.name)}>
+                        <Typography textAlign="center">{subPage}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                )}
+              </Box>
             ))}
           </Box>
 
@@ -161,3 +188,6 @@ function ResponsiveAppBar() {
 }
 
 export default ResponsiveAppBar;
+
+
+
