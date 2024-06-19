@@ -1,6 +1,7 @@
 import * as React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
+import Avatar from '@mui/material/Avatar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, MenuItem, Button } from '@mui/material';
 
@@ -180,11 +181,13 @@ function ResponsiveAppBar() {
           ))}
         </Box>
 
-        <Box sx={{ flexGrow: 0 }}>
-          <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
-            <NotificationsIcon />
-          </IconButton>
-        </Box>
+       <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
+        <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
+          <NotificationsIcon />
+        </IconButton>
+        <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
+      </Box>
+      
       </Toolbar>
     </AppBar>
   );
