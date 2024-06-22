@@ -1,4 +1,9 @@
 import MUIDataTable from "mui-datatables";
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import UpdateIcon from '@mui/icons-material/Update';
+import AddIcon from '@mui/icons-material/Add';
 
 const GroupTable = () => {
   const columns = [
@@ -6,6 +11,26 @@ const GroupTable = () => {
     { name: 'name', label: 'Nombre de Grupo', options: { width: 200 } },
     { name: 'description', label: 'Descripción', options: { width: 300 } },
     { name: 'members', label: 'Miembros', options: { width: 150 } },
+    {
+      name: 'actions',
+      label: 'Acciones',
+      options: {
+        customBodyRender: () => (
+          <div>
+            <IconButton aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
+            <IconButton aria-label="update">
+              <UpdateIcon />
+            </IconButton>
+            <IconButton aria-label="edit">
+              <EditIcon />
+            </IconButton>
+          </div>
+        ),
+        width: 150
+      }
+    }
   ];
 
   const data = [
@@ -14,7 +39,13 @@ const GroupTable = () => {
     { id: 3, name: 'Consultores', description: 'Administrators Group', members: 6 },
     { id: 4, name: 'Usuarios Avanzados', description: 'Regular Users Group', members: 8 },
    
+   
   ];
+
+  const handleAddGruop = () => {
+    
+    console.log('Add Group clicked');
+  };
 
   const options = {
     filterType: 'checkbox',
@@ -23,6 +54,13 @@ const GroupTable = () => {
     download: true,
     print: true,
     rowsPerPageOptions: [5, 10, 15],
+    customToolbar: () => {
+      return (
+        <IconButton aria-label="add" onClick={handleAddGruop}>
+          <AddIcon />
+        </IconButton>
+      );
+    }
   };
 
   return (
