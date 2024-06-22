@@ -56,6 +56,7 @@ const Usuario = () => {
     download: true,
     print: true,
     rowsPerPageOptions: [5, 10, 15],
+    responsive: 'vertical',
     customToolbar: () => {
       return (
         <IconButton aria-label="add" onClick={handleAddUser}>

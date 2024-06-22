@@ -46,6 +46,7 @@ const InstanceTable = () => {
     download: true,
     print: true,
     rowsPerPageOptions: [5, 10, 15],
+    responsive: 'vertical',
     customToolbar: () => {
       return (
         <IconButton aria-label="add" onClick={handleAddInstance}>
@@ -57,7 +58,7 @@ const InstanceTable = () => {
 
   return (
     <MUIDataTable
-      title={"Administración de Instancia"}
+      title={"Administración de Instancias"}
       data={data}
       columns={columns}
       options={options}

@@ -47,6 +47,7 @@ const RoleTable = () => {
     download: true,
     print: true,
     rowsPerPageOptions: [5, 10, 15],
+    responsive: 'horizontal',
     customToolbar: () => {
       return (
         <IconButton aria-label="add" onClick={handleAddRoles}>
