@@ -1,71 +1,48 @@
-import { DataGrid } from '@mui/x-data-grid';
-import { IconButton, InputAdornment, TextField } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import UpdateIcon from '@mui/icons-material/Update';
-import SearchIcon from '@mui/icons-material/Search';
-
-const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
-  { field: 'username', headerName: 'Username', width: 150 },
-  { field: 'name', headerName: 'Name', width: 150 },
-  { field: 'instanceId', headerName: 'Instance ID', width: 120 },
-  { field: 'sectionId', headerName: 'Section ID', width: 120 },
-  { field: 'personId', headerName: 'Person ID', width: 120 },
-  { field: 'email', headerName: 'Email', width: 200 },
-  {
-    field: 'actions',
-    headerName: 'Actions',
-    width: 150,
-    renderCell: (params) => (
-      <div>
-        <IconButton>
-          <DeleteIcon />
-        </IconButton>
-        <IconButton>
-          <UpdateIcon />
-        </IconButton>
-        <IconButton>
-          <EditIcon />
-        </IconButton>
-      </div>
-    ),
-  },
-];
-
-const rows = [
-  { id: 1, username: 'jsnow', name: 'Jon Snow', instanceId: 1, sectionId: 2, personId: 3, email: 'jsnow@example.com' },
-  { id: 2, username: 'tyrion', name: 'Tyrion Lannister', instanceId: 1, sectionId: 2, personId: 4, email: 'tyrion@example.com' },
-  { id: 3, username: 'arya', name: 'Arya Stark', instanceId: 2, sectionId: 1, personId: 5, email: 'arya@example.com' },
-  { id: 4, username: 'robert', name: 'Robert Baratheon', instanceId: 2, sectionId: 1, personId: 6, email: 'robert@example.com' },
-];
+import MUIDataTable from "mui-datatables";
 
 const Usuario = () => {
+  const columns = [
+    { name: 'id', label: 'ID', options: { width: 90 } },
+    { name: 'username', label: 'Nombre Usuario', options: { width: 150 } },
+    { name: 'name', label: 'Nombre', options: { width: 150 } },
+    { name: 'instanceId', label: 'Instancia ID', options: { width: 120 } },
+    { name: 'sectionId', label: 'Seccion ID', options: { width: 120 } },
+    { name: 'personId', label: 'Persona ID', options: { width: 120 } },
+    { name: 'rolId', label: 'Rol ID', options: { width: 120 } },
+    { name: 'email', label: 'Email', options: { width: 200 } }
+  ];
+
+  const data = [
+    { id: 1, username: 'Yanet', name: 'John Doe', instanceId: '1234', sectionId: '5678', personId: '9876', rolId: '4', email: 'yanet@example.com' },
+    { id: 2, username: 'Pavel', name: 'Jane Smith', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '2', email: 'pavel@example.com' },
+    { id: 3, username: 'David', name: 'Jane Smith', instanceId: '6734', sectionId: '2316', personId: '6543', rolId: '4', email: 'david@example.com' },
+    { id: 4, username: 'Admin', name: 'Jane Smith', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '5', email: 'admin@example.com' },
+];
+
+  const options = {
+    filterType: 'checkbox',
+    selectableRows: 'multiple',
+    resizableColumns: true,
+    download: true,
+    print: true,
+    rowsPerPageOptions: [5, 10, 15],
+    expandableRows: true,
+    renderExpandableRow: () => {
+      return (
+        <div>
+          <p>Detalles</p>
+        </div>
+      );
+    }
+  };
+
   return (
-    <div style={{ height: 400, width: '100%' }}>
-    <TextField
-        label="Search"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-      />
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5, 10, 20]}
-        checkboxSelection
-        sx={{
-          '& .MuiTablePagination-select': {
-            margin: '0 10px',
-          },
-        }}
-      />
-    </div>
+    <MUIDataTable
+      title={"Tabla de Usuarios"}
+      data={data}
+      columns={columns}
+      options={options}
+    />
   );
 };
 
