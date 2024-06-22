@@ -13,10 +13,10 @@ const Usuario = () => {
   ];
 
   const data = [
-    { id: 1, username: 'Yanet', name: 'John Doe', instanceId: '1234', sectionId: '5678', personId: '9876', rolId: '4', email: 'yanet@example.com' },
-    { id: 2, username: 'Pavel', name: 'Jane Smith', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '2', email: 'pavel@example.com' },
-    { id: 3, username: 'David', name: 'Jane Smith', instanceId: '6734', sectionId: '2316', personId: '6543', rolId: '4', email: 'david@example.com' },
-    { id: 4, username: 'Admin', name: 'Jane Smith', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '5', email: 'admin@example.com' },
+    { id: 1, username: 'Yanet', name: 'Yanet Toledo', instanceId: '1234', sectionId: '5678', personId: '9876', rolId: '4', email: 'yanet@example.com' },
+    { id: 2, username: 'Pavel', name: 'Pavel Rivera', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '2', email: 'pavel@example.com' },
+    { id: 3, username: 'David', name: 'Carlos Monier', instanceId: '6734', sectionId: '2316', personId: '6543', rolId: '4', email: 'david@example.com' },
+    { id: 4, username: 'Admin', name: 'Administrador', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '5', email: 'admin@example.com' },
 ];
 
   const options = {
