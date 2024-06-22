@@ -30,7 +30,7 @@ const BARS = [
   { color: '#00C49F', name: 'Aprobado' },
 ];
 
-function App() {
+function Dashboard() {
   return (
     <Container>
       <Typography variant="h5" gutterBottom style={{ color: 'green', textAlign: 'center' }}>
@@ -122,4 +122,4 @@ function App() {
   );
 }
 
-export default App;
+export default Dashboard;
