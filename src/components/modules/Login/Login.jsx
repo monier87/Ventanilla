@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -43,20 +43,22 @@ const Login = () => {
     });
 
     const iniciarSesion = () => {
-        const { email, password } = values;
-        axios.post(baseUrl, { email, password })
-            .then(resp => {
-                if (resp.data.type === 'Success') {
-                    setError('');
-                    localStorage.setItem('token', resp.data.token);
-                    navigate('/dashboard');
-                } else {
-                    setError(resp.data.msg);
-                }
-            })
-            .catch(error => {
-                alert(error);
-            });
+        // const { email, password } = values;
+        // axios.post(baseUrl, { email, password })
+        //     .then(resp => {
+        //         if (resp.data.type === 'Success') {
+        //             setError('');
+        //             localStorage.setItem('token', resp.data.token);
+        //             navigate('/dashboard'); // Redirige a la página dashboard al iniciar sesión con éxito
+        //         } else {
+        //             setError(resp.data.msg);
+        //         }
+        //     })
+        //     .catch(error => {
+        //         alert(error);
+        //     });
+
+        navigate('/dashboard'); // Redirige a la página dashboard al hacer clic en "Aceptar" sin condiciones
     };
 
     useEffect(() => {
@@ -119,4 +121,5 @@ const Login = () => {
     );
 };
 
+// Asegúrate de que la declaración de exportación esté al final y fuera de cualquier bloque de código
 export default Login;
