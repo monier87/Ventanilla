@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
     Alert,
-    Input,
     InputAdornment,
     InputLabel,
     IconButton,
+    FormControl,
+    OutlinedInput,
+    TextField
 } from '@mui/material';
 import {
     Mail as MailIcon,
@@ -20,7 +22,6 @@ import {
 import '../../../css/RegistroUsuario.css';
 import configur from '../../../apis/env';
 import useForm from '../../../hooks/useForm';
-
 
 // Obtener la configuración del entorno
 const env = configur.envDev ? configur.dev : configur.prod;
@@ -39,8 +40,8 @@ const RegistroUsuario = () => {
         telefono: "",
         password: "",
         confirmPassword: "",
-        showPassword: true,
-        showConfirmPassword: true,
+        showPassword: false, // Cambiar a false para mostrar la contraseña por defecto
+        showConfirmPassword: false, // Cambiar a false para mostrar la confirmación de contraseña por defecto
     });
 
     const registrarUsuario = () => {
@@ -98,117 +99,137 @@ const RegistroUsuario = () => {
                             <label className="form-label">
                                 <PeopleAltIcon className="form-icon" />Nombres
                             </label>
-                            <input
-                                type="text"
+                            <TextField
+                                variant="outlined"
                                 className="form-control"
                                 name="nombres"
                                 value={values.nombres}
                                 onChange={handleChange("nombres")}
+                                fullWidth
                             />
                         </div>
                         <div className="form-field">
                             <label className="form-label">
                                 <PeopleAltIcon className="form-icon" />Primer Apellido
                             </label>
-                            <input
-                                type="text"
+                            <TextField
+                                variant="outlined"
                                 className="form-control"
                                 name="apellido1"
                                 value={values.apellido1}
                                 onChange={handleChange("apellido1")}
+                                fullWidth
                             />
                         </div>
                         <div className="form-field">
                             <label className="form-label">
                                 <PeopleAltIcon className="form-icon" />Segundo Apellido
                             </label>
-                            <input
-                                type="text"
+                            <TextField
+                                variant="outlined"
                                 className="form-control"
                                 name="apellido2"
                                 value={values.apellido2}
                                 onChange={handleChange("apellido2")}
+                                fullWidth
                             />
                         </div>
                         <div className="form-field">
                             <label className="form-label">
                                 <PeopleAltIcon className="form-icon" />Nombre de Usuario
                             </label>
-                            <input
-                                type="text"
+                            <TextField
+                                variant="outlined"
                                 className="form-control"
                                 name="nombreUsuario"
                                 value={values.nombreUsuario}
                                 onChange={handleChange("nombreUsuario")}
+                                fullWidth
                             />
                         </div>
                         <div className="form-field">
                             <label className="form-label">
-                                <MailIcon  className="form-icon" />Correo
+                                <MailIcon className="form-icon" />Correo
                             </label>
-                            <input
-                                type="email"
+                            <TextField
+                                variant="outlined"
                                 className="form-control"
                                 name="correo"
                                 value={values.correo}
                                 onChange={handleChange("correo")}
+                                fullWidth
                             />
                         </div>
                         <div className="form-field">
                             <label className="form-label">
                                 <LocalPhoneIcon className="form-icon" />Teléfono
                             </label>
-                            <input
-                                type="text"
+                            <TextField
+                                variant="outlined"
                                 className="form-control"
                                 name="telefono"
                                 value={values.telefono}
                                 onChange={handleChange("telefono")}
+                                fullWidth
                             />
                         </div>
                         <div className="form-field">
-                            <InputLabel className="form-label" htmlFor="standard-adornment-password">
+                            <InputLabel className="form-label" htmlFor="outlined-adornment-password">
                                 <KeyIcon className="form-icon" />Contraseña
                             </InputLabel>
-                            <Input
-                                type={values.showPassword ? "password" : "text"}
-                                onChange={handleChange("password")}
-                                value={values.password}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                        >
-                                            {values.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
+                            <FormControl variant="outlined" className="form-control" fullWidth>
+                                <OutlinedInput
+                                    id="outlined-adornment-password"
+                                    type={values.showPassword ? "text" : "password"}
+                                    value={values.password}
+                                    onChange={handleChange("password")}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {values.showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    labelWidth={70}
+                                />
+                            </FormControl>
                         </div>
                         <div className="form-field">
-                            <InputLabel className="form-label" htmlFor="standard-adornment-confirm-password">
+                            <InputLabel className="form-label" htmlFor="outlined-adornment-confirm-password">
                                 <KeyIcon className="form-icon" />Confirmar Contraseña
                             </InputLabel>
-                            <Input
-                                type={values.showConfirmPassword ? "password" : "text"}
-                                onChange={handleChange("confirmPassword")}
-                                value={values.confirmPassword}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={handleClickShowConfirmPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                        >
-                                            {values.showConfirmPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
+                            <FormControl variant="outlined" className="form-control" fullWidth>
+                                <OutlinedInput
+                                    id="outlined-adornment-confirm-password"
+                                    type={values.showConfirmPassword ? "text" : "password"}
+                                    value={values.confirmPassword}
+                                    onChange={handleChange("confirmPassword")}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle confirm password visibility"
+                                                onClick={handleClickShowConfirmPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {values.showConfirmPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    labelWidth={140}
+                                />
+                            </FormControl>
                         </div>
                         <br />
-                        <button className="login-button" onClick={registrarUsuario}>Registrarse</button>
-                        <button className="cancel-button" onClick={cancelarRegistro}>Cancelar</button>
+                        <div className="button-container">
+                            <button className="login-button" onClick={registrarUsuario}>Aceptar</button>
+                            <button className="cancel-button" onClick={cancelarRegistro}>Cancelar</button>
+                       </div>
                     </div>
                 </div>
             </div>

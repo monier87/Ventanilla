@@ -9,10 +9,9 @@ const Usuario = () => {
   const columns = [
     { name: 'id', label: 'ID', options: { width: 90 } },
     { name: 'username', label: 'Nombre Usuario', options: { width: 150 } },
-    { name: 'name', label: 'Nombre', options: { width: 150 } },
-    { name: 'instanceId', label: 'Instancia ID', options: { width: 120 } },
-    { name: 'sectionId', label: 'Seccion ID', options: { width: 120 } },
-    { name: 'personId', label: 'Persona ID', options: { width: 120 } },
+    { name: 'name', label: 'Nombres y Apellidos', options: { width: 150 } },
+    { name: 'nombreintancia', label: 'Nombre Instancia', options: { width: 120 } },
+    { name: 'nombreseccion', label: 'Nombre Sección', options: { width: 120 } },
     { name: 'rolId', label: 'Rol ID', options: { width: 120 } },
     { name: 'email', label: 'Email', options: { width: 200 } },
     {
@@ -38,10 +37,10 @@ const Usuario = () => {
   ];
 
   const data = [
-    { id: 1, username: 'Yanet', name: 'Yanet Toledo', instanceId: '1234', sectionId: '5678', personId: '9876', rolId: '4', email: 'yanet@example.com' },
-    { id: 2, username: 'Pavel', name: 'Pavel Rivera', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '2', email: 'pavel@example.com' },
-    { id: 3, username: 'David', name: 'Carlos Monier', instanceId: '6734', sectionId: '2316', personId: '6543', rolId: '4', email: 'david@example.com' },
-    { id: 4, username: 'Admin', name: 'Administrador', instanceId: '5678', sectionId: '4321', personId: '6543', rolId: '5', email: 'admin@example.com' },
+    { id: 1, username: 'Yanet', name: 'Yanet Toledo', nombreintancia: 'Instancia_2', nombreseccion: 'Seccion_4', rolId: '4', email: 'yanet@example.com' },
+    { id: 2, username: 'Pavel', name: 'Pavel Rivera', nombreintancia: 'Instancia_1', nombreseccion: 'Seccion_4', rolId: '2', email: 'pavel@example.com' },
+    { id: 3, username: 'David', name: 'Carlos Monier', nombreintancia: 'Instancia_8', nombreseccion: 'Seccion_4', rolId: '4', email: 'david@example.com' },
+    { id: 4, username: 'Admin', name: 'Administrador', nombreintancia: 'Instancia_7', nombreseccion: 'Seccion_4', rolId: '5', email: 'admin@example.com' },
   ];
 
   const handleAddUser = () => {

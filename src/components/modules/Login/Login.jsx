@@ -5,9 +5,11 @@ import axios from 'axios';
 import {
   Alert,
   IconButton,
-  Input,
   InputAdornment,
-  InputLabel
+  InputLabel,
+  OutlinedInput,
+  FormControl,
+  TextField
 } from '@mui/material';
 import {
   Key as KeyIcon,
@@ -39,7 +41,7 @@ const Login = () => {
     } = useForm({
         email: "",
         password: "",
-        showPassword: true,
+        showPassword: false, // Cambiar a false para mostrar la contraseña por defecto
     });
 
     const iniciarSesion = () => {
@@ -58,7 +60,7 @@ const Login = () => {
         //         alert(error);
         //     });
 
-        navigate('/dashboard'); // Redirige a la página dashboard al hacer clic en "Aceptar" sin condiciones
+        navigate('/dashboard'); 
     };
 
     useEffect(() => {
@@ -80,33 +82,40 @@ const Login = () => {
                             <label className="form-label">
                                 <PersonIcon className="form-icon" />Usuario
                             </label>
-                            <input
-                                type="text"
+                            <TextField
+                                variant="outlined"
                                 className="form-control"
                                 name="email"
                                 value={values.email}
                                 onChange={handleChange("email")}
+                                fullWidth
                             />
                         </div>
                         <div className="form-field">
-                            <InputLabel className="form-label" htmlFor="standard-adornment-password">
+                            <InputLabel className="form-label" htmlFor="outlined-adornment-password">
                                 <KeyIcon className="form-icon" />Contraseña
                             </InputLabel>
-                            <Input
-                                type={values.showPassword ? "password" : "text"}
-                                onChange={handleChange("password")}
-                                value={values.password}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                        >
-                                            {values.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
+                            <FormControl variant="outlined" className="form-control" fullWidth>
+                                <OutlinedInput
+                                    id="outlined-adornment-password"
+                                    type={values.showPassword ? "text" : "password"}
+                                    value={values.password}
+                                    onChange={handleChange("password")}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {values.showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    labelWidth={70}
+                                />
+                            </FormControl>
                         </div>
                         <br />
                         <button className="login-button" onClick={iniciarSesion}>Aceptar</button>
@@ -121,5 +130,4 @@ const Login = () => {
     );
 };
 
-// Asegúrate de que la declaración de exportación esté al final y fuera de cualquier bloque de código
 export default Login;

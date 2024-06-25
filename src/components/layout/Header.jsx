@@ -8,7 +8,6 @@ import { AppBar, Box, Toolbar, IconButton, Typography, Menu, MenuItem, Button } 
 import { Link } from 'react-router-dom';
 
 const pages = [
-  { name: 'Inicio', path: '/dashboard' },
   {
     name: 'Iniciar Trámite', subMenu: [
       { name: 'Registro y Certificaciones', path: '/registro-certificaciones' },
@@ -31,8 +30,12 @@ const pages = [
       { name: 'Instancias', path: '/instancias' },
       { name: 'Roles', path: '/roles' }
     ]
-  }
+  },
+  {
+    name: 'Ayuda', 
+  },
 ];
+
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -83,7 +86,7 @@ function ResponsiveAppBar() {
           variant="h6"
           noWrap
           component={Link}
-          to="/"
+          to="/dashboard" 
           sx={{
             mr: 2,
             display: { xs: 'none', md: 'flex' },

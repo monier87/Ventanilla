@@ -56,6 +56,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  width: 100%;
 }
 
 /* Form Label */
@@ -76,9 +77,21 @@ body {
 
 /* Form Control */
 .form-control {
+  width: 100%;
+}
+
+.form-control .MuiOutlinedInput-root {
+  border-radius: 3px;
+}
+
+.form-control input {
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #ddd;
+}
+
+.form-control .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #ddd;
 }
 
 /* Login Button */
@@ -86,11 +99,13 @@ body {
   background-color: #0e9390;
   color: #ffffff;
   border: none;
-  padding: 4px 10px;
+  padding: 10px;
   font-size: 1.2rem;
   cursor: pointer;
   border-radius: 3px;
   margin-bottom: 20px;
+  width: 100%;
+
 }
 
 .show-pass-button {

@@ -59,6 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  width: 100%;
 }
 
 /* Form Label */
@@ -79,57 +80,25 @@ body {
 
 /* Form Control */
 .form-control {
-  padding: 10px;
-  border-radius: 3px;
-  border: 1px solid #ddd;
   width: 100%;
-  box-sizing: border-box;
 }
 
-/* Login Button */
-.login-button {
+/* Estilos para botones */
+.login-button, .cancel-button {
   background-color: #0e9390;
   color: #ffffff;
   border: none;
-  padding: 10px;
-  font-size: 1.2rem;
+  padding: 10px 20px; 
   cursor: pointer;
   border-radius: 3px;
   margin-bottom: 20px;
-  width: 100%;
-  box-sizing: border-box;
+  width: 100%; 
 }
 
-/* Cancel Button */
 .cancel-button {
-  background-color: #ccc;
-  color: #000;
-  border: none;
-  padding: 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  border-radius: 3px;
-  width: 100%;
-  box-sizing: border-box;
+  background-color: #5a5151; 
 }
 
-/* Responsive Media Queries */
-@media (max-width: 600px) {
-  .login-container {
-    padding: 10px;
-  }
-
-  .login-title {
-    font-size: 1.5rem;
-  }
-
-  .form-label {
-    font-size: 0.9rem;
-  }
-
-  .login-button,
-  .cancel-button {
-    font-size: 1rem;
-    padding: 8px;
-  }
+.login-button:hover, .cancel-button:hover {
+  opacity: 0.9; 
 }
